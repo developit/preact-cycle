@@ -20,7 +20,8 @@ export default function createCycle(renderer, data={}) {
 			fn = args.splice(0, 1)[0];
 		}
 		let p = key ? data[key] : data;
-		if (fn) p = fn(p, ...args);
+		if (typeof fn==='function') p = fn(p, ...args);
+		else p = fn;
 		if (key) data[key] = p;
 		else data = p;
 		if (!debounce) debounce = setTimeout(render, 1);
