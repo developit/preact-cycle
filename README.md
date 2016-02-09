@@ -3,10 +3,12 @@
 [![NPM](http://img.shields.io/npm/v/preact-cycle.svg)](https://www.npmjs.com/package/preact-cycle)
 [![travis-ci](https://travis-ci.org/developit/preact-cycle.svg?branch=master)](https://travis-ci.org/developit/preact-cycle)
 
-> Minimal functional_(-reactive)_ Virtual DOM rendering using [Preact].
+> Minimal functional _(-reactive)_ Virtual DOM rendering using [Preact].
 
 
 ### Simple Example
+
+[**View this example on esnextb.in**](http://esnextb.in/?gist=d804796c481218488309)
 
 ```js
 import { render, h } from 'preact-cycle';
@@ -27,6 +29,8 @@ render(App, { value: 0 });
 
 A simple example, where reducers are just pure functions.
 Note that `TOGGLE` mutates state in-place, which works fine but is discouraged.
+
+[**View this example on esnextb.in**](http://esnextb.in/?gist=9c992087c4133003a716)
 
 ```js
 import { render, h } from 'preact-cycle';
