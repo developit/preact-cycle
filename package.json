@@ -47,6 +47,6 @@
     "uglify-js": "^2.6.1"
   },
   "dependencies": {
-    "preact": "^3.2.0"
+    "preact": "^4.1.0"
   }
 }
