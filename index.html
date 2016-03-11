@@ -1,40 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta charset="UTF-8">
     <title>preact-cycle by developit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <section class="page-header">
+      <h1 class="project-name">preact-cycle</h1>
+      <h2 class="project-tagline">♻️ Minimal functional Virtual DOM rendering using Preact 🚵</h2>
+      <a href="https://github.com/developit/preact-cycle" class="btn">View on GitHub</a>
+      <a href="https://github.com/developit/preact-cycle/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/developit/preact-cycle/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <header>
-          <h1>preact-cycle</h1>
-          <h2>♻️ Minimal functional Virtual DOM rendering using Preact 🚵</h2>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/developit/preact-cycle/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/developit/preact-cycle/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/developit/preact-cycle" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h1>
+    <section class="main-content">
+      <h1>
 <a id="preact-cycle" class="anchor" href="#preact-cycle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>preact-cycle</h1>
 
-<p><a href="https://www.npmjs.com/package/preact-cycle"><img src="http://img.shields.io/npm/v/preact-cycle.svg" alt="NPM"></a>
+<p><a href="https://www.npmjs.com/package/preact-cycle"><img src="https://img.shields.io/npm/v/preact-cycle.svg" alt="NPM"></a>
 <a href="https://travis-ci.org/developit/preact-cycle"><img src="https://travis-ci.org/developit/preact-cycle.svg?branch=master" alt="travis-ci"></a></p>
 
 <blockquote>
@@ -74,38 +62,38 @@ Note that <code>TOGGLE</code> mutates state in-place, which works fine but is di
 <span class="pl-c">/** @jsx h */</span>
 
 <span class="pl-k">const</span> <span class="pl-c1">ADD</span> <span class="pl-k">=</span> ({ <span class="pl-smi">text</span>, <span class="pl-smi">todos</span>, ...<span class="pl-smi">state</span> }) <span class="pl-k">=&gt;</span> ({
-    todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-c1">concat</span>({ text }),
-    text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
-    <span class="pl-k">...</span>state
+  todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-c1">concat</span>({ text }),
+  text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+  <span class="pl-k">...</span>state
 });
 
 <span class="pl-k">const</span> <span class="pl-c1">TOGGLE</span> <span class="pl-k">=</span> (<span class="pl-smi">state</span>, <span class="pl-smi">todo</span>) <span class="pl-k">=&gt;</span> {
-    <span class="pl-smi">todo</span>.<span class="pl-smi">done</span> <span class="pl-k">=</span> <span class="pl-k">!</span><span class="pl-smi">todo</span>.<span class="pl-smi">done</span>;
-    <span class="pl-k">return</span> state;
+  <span class="pl-smi">todo</span>.<span class="pl-smi">done</span> <span class="pl-k">=</span> <span class="pl-k">!</span><span class="pl-smi">todo</span>.<span class="pl-smi">done</span>;
+  <span class="pl-k">return</span> state;
 };
 
 <span class="pl-k">const</span> <span class="pl-c1">REMOVE</span> <span class="pl-k">=</span> ({ <span class="pl-smi">todos</span>, ...<span class="pl-smi">state</span> }, <span class="pl-smi">todo</span>) <span class="pl-k">=&gt;</span> ({
-    todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-en">filter</span>( t <span class="pl-k">=&gt;</span> t<span class="pl-k">!==</span>todo ),
-    <span class="pl-k">...</span>state
+  todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-en">filter</span>( t <span class="pl-k">=&gt;</span> t<span class="pl-k">!==</span>todo ),
+  <span class="pl-k">...</span>state
 });
 
 
 <span class="pl-k">const</span> <span class="pl-c1">TodoList</span> <span class="pl-k">=</span> ({ <span class="pl-smi">text</span>, <span class="pl-smi">todos</span>, <span class="pl-smi">mutate</span>, <span class="pl-smi">mutation</span> }) <span class="pl-k">=&gt;</span> (
-    <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>form onSubmit<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">ADD</span>)} action<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>javascript:<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
-            <span class="pl-k">&lt;</span>input value<span class="pl-k">=</span>{text} onInput<span class="pl-k">=</span>{e <span class="pl-k">=&gt;</span> <span class="pl-en">mutate</span>(<span class="pl-s"><span class="pl-pds">'</span>text<span class="pl-pds">'</span></span>, <span class="pl-smi">e</span>.<span class="pl-c1">target</span>.<span class="pl-c1">value</span>)} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
-            <span class="pl-k">&lt;</span>button action<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>Add<span class="pl-k">&lt;</span><span class="pl-k">/</span>button<span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span><span class="pl-k">/</span>form<span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>ul<span class="pl-k">&gt;</span>
-            { <span class="pl-smi">todos</span>.<span class="pl-en">map</span>( todo <span class="pl-k">=&gt;</span> (
-                <span class="pl-k">&lt;</span>li onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">TOGGLE</span>, todo)}<span class="pl-k">&gt;</span>
-                    <span class="pl-k">&lt;</span>input type<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>checkbox<span class="pl-pds">"</span></span> checked<span class="pl-k">=</span>{<span class="pl-smi">todo</span>.<span class="pl-smi">done</span>} readonly <span class="pl-k">/</span><span class="pl-k">&gt;</span>
-                    <span class="pl-k">&lt;</span>p<span class="pl-k">&gt;</span>{ <span class="pl-smi">todo</span>.<span class="pl-c1">text</span> }<span class="pl-k">&lt;</span><span class="pl-k">/</span>p<span class="pl-k">&gt;</span>
-                    <span class="pl-k">&lt;</span>a onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">REMOVE</span>, todo)}<span class="pl-k">&gt;</span>✕<span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;</span>
-                <span class="pl-k">&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
-            ))}
-        <span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
-    <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+  <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>form onSubmit<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">ADD</span>)} action<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>javascript:<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>input value<span class="pl-k">=</span>{text} onInput<span class="pl-k">=</span>{e <span class="pl-k">=&gt;</span> <span class="pl-en">mutate</span>(<span class="pl-s"><span class="pl-pds">'</span>text<span class="pl-pds">'</span></span>, <span class="pl-smi">e</span>.<span class="pl-c1">target</span>.<span class="pl-c1">value</span>)} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+      <span class="pl-k">&lt;</span>button action<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>Add<span class="pl-k">&lt;</span><span class="pl-k">/</span>button<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>form<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>ul<span class="pl-k">&gt;</span>
+      { <span class="pl-smi">todos</span>.<span class="pl-en">map</span>( todo <span class="pl-k">=&gt;</span> (
+        <span class="pl-k">&lt;</span>li onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">TOGGLE</span>, todo)}<span class="pl-k">&gt;</span>
+          <span class="pl-k">&lt;</span>input type<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>checkbox<span class="pl-pds">"</span></span> checked<span class="pl-k">=</span>{<span class="pl-smi">todo</span>.<span class="pl-smi">done</span>} readonly <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+          <span class="pl-k">&lt;</span>p<span class="pl-k">&gt;</span>{ <span class="pl-smi">todo</span>.<span class="pl-c1">text</span> }<span class="pl-k">&lt;</span><span class="pl-k">/</span>p<span class="pl-k">&gt;</span>
+          <span class="pl-k">&lt;</span>a onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">REMOVE</span>, todo)}<span class="pl-k">&gt;</span>✕<span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
+      ))}
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
+  <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
 );
 
 <span class="pl-en">render</span>(TodoList, { todos<span class="pl-k">:</span> [] }, <span class="pl-c1">document</span>.<span class="pl-c1">body</span>);</pre></div>
@@ -127,29 +115,29 @@ Note that <code>TOGGLE</code> mutates state in-place, which works fine but is di
 
 <span class="pl-c">/** initial data to populate the store */</span>
 <span class="pl-k">const</span> <span class="pl-c1">INITIAL_DATA</span> <span class="pl-k">=</span> {
-    todos<span class="pl-k">:</span> [
-        { text<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>Type some text<span class="pl-pds">'</span></span> },
-        { text<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>...then hit [enter]<span class="pl-pds">'</span></span> },
-        { text<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>Now you<span class="pl-cce">\'</span>re productive!<span class="pl-pds">'</span></span> }
-    ]
+  todos<span class="pl-k">:</span> [
+    { text<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>Type some text<span class="pl-pds">'</span></span> },
+    { text<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>...then hit [enter]<span class="pl-pds">'</span></span> },
+    { text<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>Now you<span class="pl-cce">\'</span>re productive!<span class="pl-pds">'</span></span> }
+  ]
 };
 
 <span class="pl-c">/** Appends a new todo item */</span>
 <span class="pl-k">const</span> <span class="pl-c1">ADD</span> <span class="pl-k">=</span> ({ <span class="pl-smi">todos</span>, <span class="pl-smi">text</span>, ...<span class="pl-smi">state</span> }) <span class="pl-k">=&gt;</span> ({
-    todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-c1">concat</span>({ text }),
-    text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
-    <span class="pl-k">...</span>state
+  todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-c1">concat</span>({ text }),
+  text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+  <span class="pl-k">...</span>state
 });
 
 <span class="pl-c">/** Remove the given todo item */</span>
 <span class="pl-k">const</span> <span class="pl-c1">REMOVE</span> <span class="pl-k">=</span> ({ <span class="pl-smi">todos</span>, ...<span class="pl-smi">state</span> }, <span class="pl-smi">todo</span>) <span class="pl-k">=&gt;</span> ({
-    todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-en">filter</span>(t <span class="pl-k">=&gt;</span> t<span class="pl-k">!==</span>todo),
-    <span class="pl-k">...</span>state
+  todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-en">filter</span>(t <span class="pl-k">=&gt;</span> t<span class="pl-k">!==</span>todo),
+  <span class="pl-k">...</span>state
 });
 
 <span class="pl-c">/** Toggles the given todo item as done */</span>
 <span class="pl-k">const</span> <span class="pl-c1">TOGGLE</span> <span class="pl-k">=</span> (<span class="pl-smi">state</span>, <span class="pl-smi">todo</span>) <span class="pl-k">=&gt;</span> {
-    <span class="pl-smi">todo</span>.<span class="pl-smi">done</span> <span class="pl-k">=</span> <span class="pl-k">!</span><span class="pl-smi">todo</span>.<span class="pl-smi">done</span>;
+  <span class="pl-smi">todo</span>.<span class="pl-smi">done</span> <span class="pl-k">=</span> <span class="pl-k">!</span><span class="pl-smi">todo</span>.<span class="pl-smi">done</span>;
 };
 
 
@@ -159,30 +147,30 @@ Note that <code>TOGGLE</code> mutates state in-place, which works fine but is di
 
 <span class="pl-c">/** The todo list app */</span>
 <span class="pl-k">const</span> <span class="pl-c1">App</span> <span class="pl-k">=</span> ({ <span class="pl-smi">text</span>, <span class="pl-smi">todos</span> }) <span class="pl-k">=&gt;</span> (
-    <span class="pl-k">&lt;</span>div id<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span><span class="pl-c1">Form</span> text<span class="pl-k">=</span>{text} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>ul<span class="pl-k">&gt;</span>{ <span class="pl-smi">todos</span>.<span class="pl-en">map</span>( todo <span class="pl-k">=&gt;</span> (
-            <span class="pl-k">&lt;</span>Item todo<span class="pl-k">=</span>{todo} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
-        )) }<span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
-    <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+  <span class="pl-k">&lt;</span>div id<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-c1">Form</span> text<span class="pl-k">=</span>{text} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>ul<span class="pl-k">&gt;</span>{ <span class="pl-smi">todos</span>.<span class="pl-en">map</span>( todo <span class="pl-k">=&gt;</span> (
+      <span class="pl-k">&lt;</span>Item todo<span class="pl-k">=</span>{todo} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+    )) }<span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
+  <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
 );
 
 <span class="pl-c">/** New todo entry form */</span>
 <span class="pl-k">const</span> <span class="pl-c1">Form</span> <span class="pl-k">=</span> ({ <span class="pl-smi">text</span> }, { <span class="pl-smi">mutation</span> }) <span class="pl-k">=&gt;</span> (
-    <span class="pl-k">&lt;</span>form onSubmit<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">ADD</span>)} action<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>javascript:<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>input placeholder<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>New item...<span class="pl-pds">"</span></span>
-            value<span class="pl-k">=</span>{text}
-            onInput<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-s"><span class="pl-pds">'</span>text<span class="pl-pds">'</span></span>, fromEvent)} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
-    <span class="pl-k">&lt;</span><span class="pl-k">/</span>form<span class="pl-k">&gt;</span>
+  <span class="pl-k">&lt;</span>form onSubmit<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">ADD</span>)} action<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>javascript:<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>input placeholder<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>New item...<span class="pl-pds">"</span></span>
+      value<span class="pl-k">=</span>{text}
+      onInput<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-s"><span class="pl-pds">'</span>text<span class="pl-pds">'</span></span>, fromEvent)} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+  <span class="pl-k">&lt;</span><span class="pl-k">/</span>form<span class="pl-k">&gt;</span>
 );
 
 <span class="pl-c">/** A single todo list item */</span>
 <span class="pl-k">const</span> <span class="pl-c1">Item</span> <span class="pl-k">=</span> ({ <span class="pl-smi">todo</span> }, { <span class="pl-smi">mutation</span> }) <span class="pl-k">=&gt;</span> (
-    <span class="pl-k">&lt;</span>li onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">TOGGLE</span>, todo)} <span class="pl-k">class</span><span class="pl-k">=</span>{{ done<span class="pl-k">:</span> <span class="pl-smi">todo</span>.<span class="pl-smi">done</span> }}<span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>input type<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>checkbox<span class="pl-pds">"</span></span> checked<span class="pl-k">=</span>{<span class="pl-smi">todo</span>.<span class="pl-smi">done</span>} readonly <span class="pl-k">/</span><span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>a onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">REMOVE</span>, todo)}<span class="pl-k">&gt;</span>✕<span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span>p<span class="pl-k">&gt;</span>{ <span class="pl-smi">todo</span>.<span class="pl-c1">text</span> }<span class="pl-k">&lt;</span><span class="pl-k">/</span>p<span class="pl-k">&gt;</span>
-    <span class="pl-k">&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
+  <span class="pl-k">&lt;</span>li onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">TOGGLE</span>, todo)} <span class="pl-k">class</span><span class="pl-k">=</span>{{ done<span class="pl-k">:</span> <span class="pl-smi">todo</span>.<span class="pl-smi">done</span> }}<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>input type<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>checkbox<span class="pl-pds">"</span></span> checked<span class="pl-k">=</span>{<span class="pl-smi">todo</span>.<span class="pl-smi">done</span>} readonly <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>a onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">REMOVE</span>, todo)}<span class="pl-k">&gt;</span>✕<span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>p<span class="pl-k">&gt;</span>{ <span class="pl-smi">todo</span>.<span class="pl-c1">text</span> }<span class="pl-k">&lt;</span><span class="pl-k">/</span>p<span class="pl-k">&gt;</span>
+  <span class="pl-k">&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
 );
 
 <span class="pl-c">// Kick off the cycle!</span>
@@ -194,14 +182,16 @@ Note that <code>TOGGLE</code> mutates state in-place, which works fine but is di
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h3>
 
 <p><a href="http://choosealicense.com/licenses/mit/">MIT</a></p>
-        </section>
 
-        <footer>
-          preact-cycle is maintained by <a href="https://github.com/developit">developit</a><br>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/developit/preact-cycle">preact-cycle</a> is maintained by <a href="https://github.com/developit">developit</a>.</span>
 
-                  <script type="text/javascript">
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -212,7 +202,5 @@ Note that <code>TOGGLE</code> mutates state in-place, which works fine but is di
             } catch(err) {}
           </script>
 
-      </div>
-    </div>
   </body>
 </html>
