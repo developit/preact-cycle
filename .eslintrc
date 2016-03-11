@@ -4,11 +4,25 @@
   "env": {
     "browser": true
   },
-  "ecmaFeatures": {
-    "modules": true,
-    "jsx": true
+  "plugins": [
+    "react"
+  ],
+  "settings": {
+    "react": {
+      "pragma": "h"
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true
+    }
   },
   "rules": {
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
     "no-unused-vars": [1, { "varsIgnorePattern": "^h$" }],
     "no-cond-assign": 1,
     "semi": 2,

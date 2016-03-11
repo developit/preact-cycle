@@ -9,6 +9,9 @@ export default {
 			presets: [
 				'es2015-minimal-rollup',
 				'stage-0'
+			],
+			plugins: [
+				['transform-react-jsx', { pragma:'h' }]
 			]
 		})
 	]

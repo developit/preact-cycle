@@ -1,10 +1,15 @@
 import { h, render as doRender } from 'preact';
+import Contextualize from './contextualize';
 import createCycle from './create-cycle';
 
 function createRenderer(Renderable, parent) {
 	let root;
 	return props => {
-		root = doRender(h(Renderable, props), parent, root);
+		root = doRender((
+			<Contextualize {...props}>
+				<Renderable {...props} />
+			</Contextualize>
+		), parent, root);
 	};
 }
 
