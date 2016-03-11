@@ -29,7 +29,7 @@ export default function createCycle(renderer, data={}) {
 
 	// mutation future/thunk
 	// eg:	let double = mutation('value', v => v*2 )
-	let mutation = (...args) => () => mutate(...args);
+	let mutation = (...args) => (...args2) => mutate(...args, ...args2);
 
 	return render();
 }
