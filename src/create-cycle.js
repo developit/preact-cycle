@@ -14,14 +14,14 @@ export default function createCycle(renderer, data={}) {
 	// optionally key-specific mutation of data
 	// eg:	mutate('value', v => v*2 )
 	function mutate(fn, ...args) {
-		let key;
+		let key, r;
 		if (typeof fn==='string') {
 			key = fn;
 			fn = args.splice(0, 1)[0];
 		}
 		let p = key ? data[key] : data;
-		if (typeof fn==='function') p = fn(p, ...args);
-		else p = fn;
+		if (typeof fn!=='function') p = fn;
+		else if ( (r=fn(p, ...args))!==undefined ) p = r;
 		if (key) data[key] = p;
 		else data = p;
 		if (!debounce) debounce = setTimeout(render, 1);
