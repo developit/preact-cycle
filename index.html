@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>preact-cycle by developit</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>preact-cycle</h1>
+          <h2>♻️ Minimal functional Virtual DOM rendering using Preact 🚵</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/developit/preact-cycle/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/developit/preact-cycle/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/developit/preact-cycle" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="preact-cycle" class="anchor" href="#preact-cycle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>preact-cycle</h1>
+
+<p><a href="https://www.npmjs.com/package/preact-cycle"><img src="http://img.shields.io/npm/v/preact-cycle.svg" alt="NPM"></a>
+<a href="https://travis-ci.org/developit/preact-cycle"><img src="https://travis-ci.org/developit/preact-cycle.svg?branch=master" alt="travis-ci"></a></p>
+
+<blockquote>
+<p>Minimal functional <em>(-reactive)</em> Virtual DOM rendering using <a href="https://github.com/developit/preact">Preact</a>.</p>
+</blockquote>
+
+<hr>
+
+<h3>
+<a id="simple-example" class="anchor" href="#simple-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple Example</h3>
+
+<p><a href="http://esnextb.in/?gist=d804796c481218488309"><strong>View this example on esnextb.in</strong></a></p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">render</span>, <span class="pl-smi">h</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>preact-cycle<span class="pl-pds">'</span></span>;
+<span class="pl-c">/** @jsx h */</span>
+
+<span class="pl-k">const</span> <span class="pl-c1">App</span> <span class="pl-k">=</span> ({ <span class="pl-smi">value</span>, <span class="pl-smi">mutation</span> }) <span class="pl-k">=&gt;</span> (
+  <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>p<span class="pl-k">&gt;</span>Value<span class="pl-k">:</span> { value }<span class="pl-k">&lt;</span><span class="pl-k">/</span>p<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span>button onClick<span class="pl-k">=</span>{ <span class="pl-en">mutation</span>(<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>, v <span class="pl-k">=&gt;</span> v<span class="pl-k">+</span><span class="pl-c1">1</span>) }<span class="pl-k">&gt;</span>Increment<span class="pl-k">&lt;</span><span class="pl-k">/</span>button<span class="pl-k">&gt;</span>
+  <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+);
+
+<span class="pl-en">render</span>(App, { value<span class="pl-k">:</span> <span class="pl-c1">0</span> });</pre></div>
+
+<hr>
+
+<h3>
+<a id="to-do-list-example" class="anchor" href="#to-do-list-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>To-Do List Example</h3>
+
+<p>A simple example, where reducers are just pure functions.
+Note that <code>TOGGLE</code> mutates state in-place, which works fine but is discouraged.</p>
+
+<p><a href="http://esnextb.in/?gist=9c992087c4133003a716"><strong>View this example on esnextb.in</strong></a></p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">render</span>, <span class="pl-smi">h</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>preact-cycle<span class="pl-pds">'</span></span>;
+<span class="pl-c">/** @jsx h */</span>
+
+<span class="pl-k">const</span> <span class="pl-c1">ADD</span> <span class="pl-k">=</span> ({ <span class="pl-smi">text</span>, <span class="pl-smi">todos</span>, ...<span class="pl-smi">state</span> }) <span class="pl-k">=&gt;</span> ({
+    todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-c1">concat</span>({ text }),
+    text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+    <span class="pl-k">...</span>state
+});
+
+<span class="pl-k">const</span> <span class="pl-c1">TOGGLE</span> <span class="pl-k">=</span> (<span class="pl-smi">state</span>, <span class="pl-smi">todo</span>) <span class="pl-k">=&gt;</span> {
+    <span class="pl-smi">todo</span>.<span class="pl-smi">done</span> <span class="pl-k">=</span> <span class="pl-k">!</span><span class="pl-smi">todo</span>.<span class="pl-smi">done</span>;
+    <span class="pl-k">return</span> state;
+};
+
+<span class="pl-k">const</span> <span class="pl-c1">REMOVE</span> <span class="pl-k">=</span> ({ <span class="pl-smi">todos</span>, ...<span class="pl-smi">state</span> }, <span class="pl-smi">todo</span>) <span class="pl-k">=&gt;</span> ({
+    todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-en">filter</span>( t <span class="pl-k">=&gt;</span> t<span class="pl-k">!==</span>todo ),
+    <span class="pl-k">...</span>state
+});
+
+
+<span class="pl-k">const</span> <span class="pl-c1">TodoList</span> <span class="pl-k">=</span> ({ <span class="pl-smi">text</span>, <span class="pl-smi">todos</span>, <span class="pl-smi">mutate</span>, <span class="pl-smi">mutation</span> }) <span class="pl-k">=&gt;</span> (
+    <span class="pl-k">&lt;</span>div<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>form onSubmit<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">ADD</span>)} action<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>javascript:<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+            <span class="pl-k">&lt;</span>input value<span class="pl-k">=</span>{text} onInput<span class="pl-k">=</span>{e <span class="pl-k">=&gt;</span> <span class="pl-en">mutate</span>(<span class="pl-s"><span class="pl-pds">'</span>text<span class="pl-pds">'</span></span>, <span class="pl-smi">e</span>.<span class="pl-c1">target</span>.<span class="pl-c1">value</span>)} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+            <span class="pl-k">&lt;</span>button action<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>submit<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>Add<span class="pl-k">&lt;</span><span class="pl-k">/</span>button<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span><span class="pl-k">/</span>form<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>ul<span class="pl-k">&gt;</span>
+            { <span class="pl-smi">todos</span>.<span class="pl-en">map</span>( todo <span class="pl-k">=&gt;</span> (
+                <span class="pl-k">&lt;</span>li onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">TOGGLE</span>, todo)}<span class="pl-k">&gt;</span>
+                    <span class="pl-k">&lt;</span>input type<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>checkbox<span class="pl-pds">"</span></span> checked<span class="pl-k">=</span>{<span class="pl-smi">todo</span>.<span class="pl-smi">done</span>} readonly <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+                    <span class="pl-k">&lt;</span>p<span class="pl-k">&gt;</span>{ <span class="pl-smi">todo</span>.<span class="pl-c1">text</span> }<span class="pl-k">&lt;</span><span class="pl-k">/</span>p<span class="pl-k">&gt;</span>
+                    <span class="pl-k">&lt;</span>a onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">REMOVE</span>, todo)}<span class="pl-k">&gt;</span>✕<span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;</span>
+                <span class="pl-k">&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
+            ))}
+        <span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+);
+
+<span class="pl-en">render</span>(TodoList, { todos<span class="pl-k">:</span> [] }, <span class="pl-c1">document</span>.<span class="pl-c1">body</span>);</pre></div>
+
+<hr>
+
+<h3>
+<a id="component-based-example" class="anchor" href="#component-based-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Component-Based Example</h3>
+
+<p>Normal <a href="https://github.com/developit/preact">preact</a> components still work great with preact-cycle. As of <code>v0.4</code>, <code>mutate()</code> and <code>mutation()</code> are conveniently available as <a href="https://facebook.github.io/react/docs/context.html">context</a> properties, which means they are automatically passed down through the VDOM tree. For pure functional components, <a href="https://facebook.github.io/react/docs/context.html">context</a> is simply passed as a second argument.</p>
+
+<p>A component-based variant of the previous To-Do List example follows, using pure functions and context.</p>
+
+<p><a href="http://www.webpackbin.com/EyjngQinx"><strong>View this example on Webpackbin</strong></a></p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">h</span>, <span class="pl-smi">render</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>preact-cycle<span class="pl-pds">'</span></span>;
+<span class="pl-c">/** @jsx h */</span>
+
+
+<span class="pl-c">/** initial data to populate the store */</span>
+<span class="pl-k">const</span> <span class="pl-c1">INITIAL_DATA</span> <span class="pl-k">=</span> {
+    todos<span class="pl-k">:</span> [
+        { text<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>Type some text<span class="pl-pds">'</span></span> },
+        { text<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>...then hit [enter]<span class="pl-pds">'</span></span> },
+        { text<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">'</span>Now you<span class="pl-cce">\'</span>re productive!<span class="pl-pds">'</span></span> }
+    ]
+};
+
+<span class="pl-c">/** Appends a new todo item */</span>
+<span class="pl-k">const</span> <span class="pl-c1">ADD</span> <span class="pl-k">=</span> ({ <span class="pl-smi">todos</span>, <span class="pl-smi">text</span>, ...<span class="pl-smi">state</span> }) <span class="pl-k">=&gt;</span> ({
+    todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-c1">concat</span>({ text }),
+    text<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,
+    <span class="pl-k">...</span>state
+});
+
+<span class="pl-c">/** Remove the given todo item */</span>
+<span class="pl-k">const</span> <span class="pl-c1">REMOVE</span> <span class="pl-k">=</span> ({ <span class="pl-smi">todos</span>, ...<span class="pl-smi">state</span> }, <span class="pl-smi">todo</span>) <span class="pl-k">=&gt;</span> ({
+    todos<span class="pl-k">:</span> <span class="pl-smi">todos</span>.<span class="pl-en">filter</span>(t <span class="pl-k">=&gt;</span> t<span class="pl-k">!==</span>todo),
+    <span class="pl-k">...</span>state
+});
+
+<span class="pl-c">/** Toggles the given todo item as done */</span>
+<span class="pl-k">const</span> <span class="pl-c1">TOGGLE</span> <span class="pl-k">=</span> (<span class="pl-smi">state</span>, <span class="pl-smi">todo</span>) <span class="pl-k">=&gt;</span> {
+    <span class="pl-smi">todo</span>.<span class="pl-smi">done</span> <span class="pl-k">=</span> <span class="pl-k">!</span><span class="pl-smi">todo</span>.<span class="pl-smi">done</span>;
+};
+
+
+<span class="pl-c">/** a simple helper to derive a mutated value from an event */</span>
+<span class="pl-k">let</span> <span class="pl-en">fromEvent</span> <span class="pl-k">=</span> (<span class="pl-smi">prev</span>, <span class="pl-smi">e</span>) <span class="pl-k">=&gt;</span> <span class="pl-smi">e</span>.<span class="pl-c1">target</span>.<span class="pl-c1">value</span>;
+
+
+<span class="pl-c">/** The todo list app */</span>
+<span class="pl-k">const</span> <span class="pl-c1">App</span> <span class="pl-k">=</span> ({ <span class="pl-smi">text</span>, <span class="pl-smi">todos</span> }) <span class="pl-k">=&gt;</span> (
+    <span class="pl-k">&lt;</span>div id<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span><span class="pl-c1">Form</span> text<span class="pl-k">=</span>{text} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>ul<span class="pl-k">&gt;</span>{ <span class="pl-smi">todos</span>.<span class="pl-en">map</span>( todo <span class="pl-k">=&gt;</span> (
+            <span class="pl-k">&lt;</span>Item todo<span class="pl-k">=</span>{todo} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+        )) }<span class="pl-k">&lt;</span><span class="pl-k">/</span>ul<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>div<span class="pl-k">&gt;</span>
+);
+
+<span class="pl-c">/** New todo entry form */</span>
+<span class="pl-k">const</span> <span class="pl-c1">Form</span> <span class="pl-k">=</span> ({ <span class="pl-smi">text</span> }, { <span class="pl-smi">mutation</span> }) <span class="pl-k">=&gt;</span> (
+    <span class="pl-k">&lt;</span>form onSubmit<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">ADD</span>)} action<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>javascript:<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>input placeholder<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>New item...<span class="pl-pds">"</span></span>
+            value<span class="pl-k">=</span>{text}
+            onInput<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-s"><span class="pl-pds">'</span>text<span class="pl-pds">'</span></span>, fromEvent)} <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>form<span class="pl-k">&gt;</span>
+);
+
+<span class="pl-c">/** A single todo list item */</span>
+<span class="pl-k">const</span> <span class="pl-c1">Item</span> <span class="pl-k">=</span> ({ <span class="pl-smi">todo</span> }, { <span class="pl-smi">mutation</span> }) <span class="pl-k">=&gt;</span> (
+    <span class="pl-k">&lt;</span>li onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">TOGGLE</span>, todo)} <span class="pl-k">class</span><span class="pl-k">=</span>{{ done<span class="pl-k">:</span> <span class="pl-smi">todo</span>.<span class="pl-smi">done</span> }}<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>input type<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>checkbox<span class="pl-pds">"</span></span> checked<span class="pl-k">=</span>{<span class="pl-smi">todo</span>.<span class="pl-smi">done</span>} readonly <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>a onClick<span class="pl-k">=</span>{<span class="pl-en">mutation</span>(<span class="pl-c1">REMOVE</span>, todo)}<span class="pl-k">&gt;</span>✕<span class="pl-k">&lt;</span><span class="pl-k">/</span>a<span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span>p<span class="pl-k">&gt;</span>{ <span class="pl-smi">todo</span>.<span class="pl-c1">text</span> }<span class="pl-k">&lt;</span><span class="pl-k">/</span>p<span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span>li<span class="pl-k">&gt;</span>
+);
+
+<span class="pl-c">// Kick off the cycle!</span>
+<span class="pl-en">render</span>(App, <span class="pl-c1">INITIAL_DATA</span>, <span class="pl-c1">document</span>.<span class="pl-c1">body</span>);</pre></div>
+
+<hr>
+
+<h3>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h3>
+
+<p><a href="http://choosealicense.com/licenses/mit/">MIT</a></p>
+        </section>
+
+        <footer>
+          preact-cycle is maintained by <a href="https://github.com/developit">developit</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+                  <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-6031694-18");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+      </div>
+    </div>
+  </body>
+</html>
