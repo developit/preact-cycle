@@ -1,7 +1,7 @@
 {
   "name": "preact-cycle",
   "amdName": "preactCycle",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Minimal functional Virtual DOM rendering using Preact.",
   "main": "dist/preact-cycle.js",
   "minified:main": "dist/preact-cycle.min.js",
