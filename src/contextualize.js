@@ -2,8 +2,8 @@
 export default function Contextualize() {}
 
 Contextualize.prototype.getChildContext = function() {
-	let { children, ...props } = this.props;
-	return props;
+	let { children, ...context } = this.props;
+	return context;
 };
 
 Contextualize.prototype.render = ({ children }) => children[0];

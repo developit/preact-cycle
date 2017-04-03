@@ -7,7 +7,7 @@ export default {
 			sourceMap: true,
 			exclude: 'node_modules/**',
 			presets: [
-				'es2015-minimal-rollup',
+				['es2015', { loose:true, modules:false }],
 				'stage-0'
 			],
 			plugins: [
