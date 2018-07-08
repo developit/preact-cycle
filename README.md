@@ -36,7 +36,7 @@ render(App, { value: 0 });
 A simple example, where reducers are just pure functions.
 Note that `TOGGLE` mutates state in-place, which works fine but is discouraged.
 
-[**View this example on esnextb.in**](http://esnextb.in/?gist=9c992087c4133003a716)
+[**View this example on CodePen**](https://codepen.io/developit/pen/XYvQjr?editors=0110)
 
 ```js
 import { render, h } from 'preact-cycle';
