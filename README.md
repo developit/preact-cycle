@@ -90,8 +90,6 @@ Normal [preact] components still work great with preact-cycle. As of `v0.4`, `mu
 
 A component-based variant of the previous To-Do List example follows, using pure functions and context.
 
-[**View this example on Webpackbin**](http://www.webpackbin.com/EyjngQinx)
-
 ```js
 import { h, render } from 'preact-cycle';
 /** @jsx h */
